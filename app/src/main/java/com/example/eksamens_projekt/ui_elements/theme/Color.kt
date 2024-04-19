@@ -1,4 +1,4 @@
-package com.example.eksamens_projekt.ui.theme
+package com.example.eksamens_projekt.ui_elements.theme
 
 import androidx.compose.ui.graphics.Color
 
