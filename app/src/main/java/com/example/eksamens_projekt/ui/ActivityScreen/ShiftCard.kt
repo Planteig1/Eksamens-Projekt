@@ -75,6 +75,14 @@ fun ShiftCard(title: String, organization: String, date: String, time: String) {
                 )
             }
         }
+
+        // Change text if shift is requested
+        val dropdownText = if (viewModel.isRequested.value) {
+            "Du har anmodet om vagten"
+        } else {
+            "Anmod om vagt:"
+        }
+
         // Dropdown menu that appears when the icon is clicked
         DropdownMenu(
             expanded = viewModel.isExpanded,
@@ -90,7 +98,7 @@ fun ShiftCard(title: String, organization: String, date: String, time: String) {
                             .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ){
-                        Text(text = "Anmod om vagt: ")
+                        Text(text = dropdownText)
                         RequestShiftCheckbox(viewModel)
                     } },
                 onClick = { viewModel.isExpanded = false },
