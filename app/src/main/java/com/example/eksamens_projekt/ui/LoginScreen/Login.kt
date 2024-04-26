@@ -1,4 +1,6 @@
-import androidx.compose.foundation.Image
+package com.example.eksamens_projekt.ui.LoginScreen
+
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
@@ -12,22 +14,28 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.res.imageResource
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import com.example.eksamens_projekt.ui.LoginScreen.LoginViewModel
 
 
 @Composable
-fun LoginScreen() {
-    var rememberMe by remember { mutableStateOf(false) }
+fun LoginScreen(
+    onSuccessLogin: () -> Unit,
+) {
+    val loginViewModel = LoginViewModel()
+    val context = LocalContext.current
+
 
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
         //Titel & undertitel
         Text(text = "Velkommen til Volunify", fontSize = 28.sp)
         Spacer(modifier = Modifier.height(4.dp))
@@ -36,36 +44,45 @@ fun LoginScreen() {
 
         //Email
         Spacer(modifier = Modifier.height(40.dp))
-        OutlinedTextField(value = "", onValueChange = {}, label = {
+        OutlinedTextField(
+            value = loginViewModel.email,
+            onValueChange = { loginViewModel.email = it },
+            label = {
             Text(text = "Email")
         })
+
+
         //Adgangskode
-        OutlinedTextField(value = "", onValueChange = {}, label = {
+        OutlinedTextField(
+            value = loginViewModel.password,
+            onValueChange = { loginViewModel.password = it },
+            label = {
             Text(text = "Adgangskode")
         })
+
+
         //Checkbox & glemt adgangskode
         Row {
-
             Checkbox(
-                checked = rememberMe,
-                onCheckedChange = { rememberMe = it }
+                checked = loginViewModel.rememberMe,
+                onCheckedChange = { loginViewModel.rememberMe = it }
             )
             Spacer(modifier = Modifier.width(12.dp))
             Text(
                 text = "Husk mig",
                 fontSize = 10.sp
             )
-
             Spacer(modifier = Modifier.weight(10f))
             Text(text = "Glemt adgangskode?", fontSize = 10.sp, modifier = Modifier.clickable {
-
 
             })
         }
 
         //Login
         Spacer(modifier = Modifier.height(20.dp))
-        Button(onClick = { }) {
+        Button(onClick = {
+            loginViewModel.login(loginViewModel.email, loginViewModel.password, onSuccessLogin, onFailure = {})
+        }) {
             Text(text = "Login")
 
         }
@@ -75,26 +92,3 @@ fun LoginScreen() {
         Text(text = "Eller login med")
     }
 }
-        /*
-        Spacer(modifier = Modifier.height(15.dp))
-        Image(
-            painter = painterResource(id = R.drawable.fb_logo),
-            contentDescription = "Facebook",
-            modifier = Modifier.size(60.dp).clickable {
-                //Facebook-link
-            })
-        Image(
-            painter = painterResource(id = R.drawable.google_logo),
-            contentDescription = "Google",
-            modifier = Modifier.size(60.dp).clickable {
-                //Google-link
-            })
-        Image(
-            painter = painterResource(id = R.drawable.x_logo),
-            contentDescription = "X",
-            modifier = Modifier.size(60.dp).clickable {
-                //X-link
-            })
-    }
-    }
-         */

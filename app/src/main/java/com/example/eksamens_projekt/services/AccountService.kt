@@ -17,11 +17,11 @@ class AccountService {
             }
     }
 
-    fun login(email: String, password: String, onResult: () -> Unit) {
+    fun login(email: String, password: String, onSuccessLogin: () -> Unit) {
         Firebase.auth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 //Give it the function of what to do
-                onResult()
+                onSuccessLogin()
             }
 
     }

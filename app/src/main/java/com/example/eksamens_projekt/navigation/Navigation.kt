@@ -1,10 +1,10 @@
 package com.example.eksamens_projekt.navigation
 
+import com.example.eksamens_projekt.ui.LoginScreen.LoginScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.eksamens_projekt.navigation.Screen
 
 
 @Composable
@@ -28,6 +28,9 @@ fun Navigation() {
         // Login Screen
         composable(Screen.Login.route) {
             // ADD LOGIN SCREEN COMPOSEABLE
+            LoginScreen(
+                onSuccessLogin = {navController.navigate(Screen.Home.route)}
+            )
         }
         // Register Screen
         composable(Screen.Register.route) {
