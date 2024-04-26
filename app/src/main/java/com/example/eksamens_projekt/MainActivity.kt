@@ -8,6 +8,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.eksamens_projekt.navigation.Navigation
+import com.example.eksamens_projekt.ui.ActivityScreen.ActivityScreen
+import com.example.eksamens_projekt.ui.RegisterScreen.CreateUserScreen
 import com.example.eksamens_projekt.ui_elements.theme.EksamensProjektTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Navigation()
+                    ActivityScreen()
 
                 }
             }
