@@ -34,8 +34,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun ShiftCard(title: String, organization: String, date: String, time: String) {
 
-    var isExpanded by remember { mutableStateOf(false) }
-
+    val viewModel = RequestShiftViewModel()
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -71,15 +70,15 @@ fun ShiftCard(title: String, organization: String, date: String, time: String) {
                     contentDescription = "Open Dropdown",
                     modifier = Modifier
                         .size(40.dp)
-                        .clickable { isExpanded = !isExpanded },
+                        .clickable { viewModel.isExpanded =! viewModel.isExpanded},
                     tint = Color(0xFF364830)
                 )
             }
         }
         // Dropdown menu that appears when the icon is clicked
         DropdownMenu(
-            expanded = isExpanded,
-            onDismissRequest = { isExpanded = false },
+            expanded = viewModel.isExpanded,
+            onDismissRequest = { viewModel.isExpanded = false },
             modifier = Modifier.width(382.dp),
 
         ) {
@@ -92,9 +91,9 @@ fun ShiftCard(title: String, organization: String, date: String, time: String) {
                         horizontalArrangement = Arrangement.SpaceBetween
                     ){
                         Text(text = "Anmod om vagt: ")
-                        RequestShiftCheckbox()
+                        RequestShiftCheckbox(viewModel)
                     } },
-                onClick = { isExpanded = false },
+                onClick = { viewModel.isExpanded = false },
                 modifier = Modifier,
             )
         }

@@ -33,19 +33,22 @@ fun ActivityScreen() {
                     title = "Barvagt",
                     organization = "Roskilde Festival",
                     date = "04-07-2024",
-                    time = "11:00-20:00"
+                    time = "11:00-20:00",
+
                 )
                 ShiftCard(
                     title = "Barvagt",
                     organization = "Musik i Lejet",
                     date = "12-07-2024",
-                    time = "19:30-01:30"
+                    time = "19:30-01:30",
+
                 )
                 ShiftCard(
                     title = "Billetscanner",
                     organization = "Roskilde Festival",
                     date = "29-06-2024",
-                    time = "15:00-21:00"
+                    time = "15:00-21:00",
+
                 )
             }
         }

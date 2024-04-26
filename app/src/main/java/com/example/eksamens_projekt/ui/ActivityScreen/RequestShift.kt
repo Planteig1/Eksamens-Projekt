@@ -6,7 +6,7 @@ import com.example.eksamens_projekt.ui.ActivityScreen.RequestShiftViewModel
 
 
 @Composable
-fun RequestShiftCheckbox(requestShiftViewModel: RequestShiftViewModel = viewModel()) {
+fun RequestShiftCheckbox(requestShiftViewModel: RequestShiftViewModel) {
 
     val isRequested = requestShiftViewModel.isRequested.value
 

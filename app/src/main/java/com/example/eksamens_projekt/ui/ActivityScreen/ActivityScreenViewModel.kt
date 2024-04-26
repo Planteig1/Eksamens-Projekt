@@ -7,4 +7,11 @@ import androidx.compose.ui.graphics.Color
 
 class ActivityScreenViewModel {
     var backgroundColor by mutableStateOf(Color(0xFFC8D5B9))
+
+
+    // Search bar
+
+    // list of shifts
+
+
 }
